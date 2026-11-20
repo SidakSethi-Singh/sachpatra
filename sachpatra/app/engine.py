@@ -7,7 +7,8 @@ import re
 from typing import List, Optional, Set, Tuple
 
 from app.actions import build_action_plan, build_drafts
-from app.i18n import CANNOT_VERIFY_ADVICE, DISCLAIMER, RULES_METADATA
+from app.gemini import simplify
+from app.i18n import CANNOT_VERIFY_ADVICE, DISCLAIMER, PLAIN_SUMMARY_FALLBACK, RULES_METADATA
 from app.rules import RULES, Rule, normalize_text
 from app.schemas import ActionStep, AnalyzeRequest, AnalyzeResponse, Drafts, Reason
 
@@ -50,7 +51,7 @@ def is_negated_match(text: str, start: int, end: int, rule_id: str = "") -> bool
     by negation words, or contains negation words within the matched span
     (except for rules like R02 and R06 whose definition inherently includes negative phrasing).
     """
-    # Restrict preceding text to the current sentence/clause boundary
+    # Restrict preceding text to current clause/sentence boundary
     preceding_text = text[:start]
     clause_parts = re.split(r"[.!?।;\n]", preceding_text)
     current_clause = clause_parts[-1] if clause_parts else preceding_text
@@ -63,7 +64,6 @@ def is_negated_match(text: str, start: int, end: int, rule_id: str = "") -> bool
             return True
 
     # Check tokens inside match span for SOV languages where negation particle is before verb
-    # Rules R02 ("do not disconnect") and R06 ("do not tell family") inherently use negative phrasing
     if rule_id not in ("R02", "R06"):
         match_tokens = re.findall(r"\S+", text[start:end])
         for token in match_tokens:
@@ -106,7 +106,6 @@ def evaluate_rules(text: str, norm_text: str) -> List[Tuple[Rule, str]]:
 
     for rule in RULES:
         if rule.custom_checker:
-            # Custom code checker (e.g. R11 URL check)
             match_span = rule.custom_checker(norm_text)
             if match_span:
                 start, end = match_span
@@ -115,7 +114,6 @@ def evaluate_rules(text: str, norm_text: str) -> List[Tuple[Rule, str]]:
                     fired.append((rule, snippet))
             continue
 
-        # Standard regex evaluation across all supported language patterns
         rule_matched = False
         for lang_key, pattern_str in rule.patterns.items():
             if not pattern_str:
@@ -143,12 +141,11 @@ def check_advisory(text: str, norm_text: str) -> bool:
     matches_awareness = any(pat.search(norm_text) for pat in AWARENESS_PATTERNS)
     if not matches_awareness:
         return False
-    # If it contains urgent coercive second-person payment demands, it's NOT an advisory
     has_urgent_demand = any(pat.search(norm_text) for pat in URGENT_DEMAND_PATTERNS)
     return not has_urgent_demand
 
 
-def analyze_text(request: AnalyzeRequest) -> AnalyzeResponse:
+def analyze_text(request: AnalyzeRequest, engine_tag: str = "rules") -> AnalyzeResponse:
     """Main deterministic analysis pipeline."""
     raw_text = request.text
     norm_text = normalize_text(raw_text)
@@ -166,7 +163,6 @@ def analyze_text(request: AnalyzeRequest) -> AnalyzeResponse:
     is_advisory = check_advisory(raw_text, norm_text)
 
     # 4. Score calculation
-    # sum of weights
     sum_weights = sum(r.weight for r, _ in fired_rules_with_snippets)
     distinct_categories = {r.category for r, _ in fired_rules_with_snippets}
     category_bonus = 10 if len(distinct_categories) >= 3 else 0
@@ -178,7 +174,6 @@ def analyze_text(request: AnalyzeRequest) -> AnalyzeResponse:
         final_score = base_score
 
     # 5. Verdict determination
-    # Hard combinations: (R05 or R10 fires AND R03 or R01 fires)
     fired_ids = {r.id for r, _ in fired_rules_with_snippets}
     has_payment_or_tech = ("R05" in fired_ids or "R10" in fired_ids)
     has_agency_or_digital_arrest = ("R03" in fired_ids or "R01" in fired_ids)
@@ -211,11 +206,18 @@ def analyze_text(request: AnalyzeRequest) -> AnalyzeResponse:
             )
         )
 
-    # 7. Build action plan and drafts
+    # 7. Action plan and reporting drafts
     action_plan = build_action_plan(output_lang)
     drafts = build_drafts(raw_text, output_lang)
 
-    # 8. Disclaimer
+    # 8. Plain-language summary (Gemini enhancement or i18n fallback)
+    plain_summary = simplify(reasons, output_lang)
+    if not plain_summary:
+        plain_summary = PLAIN_SUMMARY_FALLBACK.get(verdict, {}).get(
+            output_lang, PLAIN_SUMMARY_FALLBACK[verdict]["en"]
+        )
+
+    # 9. Disclaimer
     disclaimer = DISCLAIMER.get(output_lang, DISCLAIMER["en"])
 
     return AnalyzeResponse(
@@ -226,5 +228,7 @@ def analyze_text(request: AnalyzeRequest) -> AnalyzeResponse:
         language=output_lang,
         action_plan=action_plan,
         drafts=drafts,
-        disclaimer=disclaimer
+        disclaimer=disclaimer,
+        plain_summary=plain_summary,
+        engine=engine_tag
     )

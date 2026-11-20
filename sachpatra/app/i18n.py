@@ -1,32 +1,57 @@
 """Internationalization resources for SachPatra.
 Supported languages: en (English), hi (Hindi), pa (Punjabi).
 All user-facing text, rule descriptions, action plans, drafts, and disclaimers live here.
+Refined for natural, simple, respectful phrasing accessible to elderly and non-technical citizens.
 """
 
 from typing import Any, Dict, List
 
 DISCLAIMER: Dict[str, str] = {
     "en": "Automated screening, not legal advice. If in doubt, call 1930.",
-    "hi": "स्वचालित स्क्रीनिंग, कानूनी सलाह नहीं। यदि कोई संदेह हो, तो 1930 पर कॉल करें।",
-    "pa": "ਸਵੈਚਾਲਿਤ ਸਕ੍ਰੀਨਿੰਗ, ਕਾਨੂੰਨੀ ਸਲਾਹ ਨਹੀਂ। ਜੇਕਰ ਕੋਈ ਸ਼ੱਕ ਹੋਵੇ ਤਾਂ 1930 'ਤੇ ਕਾਲ ਕਰੋ।"
+    "hi": "यह एक स्वचालित जांच है, कानूनी सलाह नहीं। किसी भी संदेह या दबाव में तुरंत 1930 पर कॉल करें।",
+    "pa": "ਇਹ ਕੰਪਿਊਟਰ ਆਧਾਰਿਤ ਜਾਂਚ ਹੈ, ਕਾਨੂੰਨੀ ਸਲਾਹ ਨਹੀਂ। ਕਿਸੇ ਵੀ ਸ਼ੱਕ ਜਾਂ ਦਬਾਅ ਦੀ ਹਾਲਤ ਵਿੱਚ ਤੁਰੰਤ 1930 'ਤੇ ਫੋਨ ਕਰੋ।"
 }
 
 CANNOT_VERIFY_ADVICE: Dict[str, str] = {
     "en": "Automated screening could not detect typical digital arrest scam patterns. Verify via official channels, and if pressured or in doubt, call 1930.",
-    "hi": "स्वचालित स्क्रीनिंग में डिजिटल अरेस्ट के सामान्य संकेत नहीं मिले। आधिकारिक माध्यमों से पुष्टि करें, और दबाव या संदेह होने पर 1930 पर कॉल करें।",
-    "pa": "ਸਵੈਚਾਲਿਤ ਸਕ੍ਰੀਨਿੰਗ ਵਿੱਚ ਡਿਜੀਟਲ ਅਰੈਸਟ ਦੇ ਖਾਸ ਸੰਕੇਤ ਨਹੀਂ ਮਿਲੇ। ਸਰਕਾਰੀ ਚੈਨਲਾਂ ਰਾਹੀਂ ਪੁਸ਼ਟੀ ਕਰੋ, ਅਤੇ ਦਬਾਅ ਜਾਂ ਸ਼ੱਕ ਹੋਣ 'ਤੇ 1930 'ਤੇ ਕਾਲ ਕਰੋ।"
+    "hi": "स्वचालित जांच में डिजिटल अरेस्ट के जाने-माने लक्षण नहीं मिले। किसी भी अनजान व्यक्ति के कहने पर पैसे न भेजें, और दबाव होने पर 1930 पर संपर्क करें।",
+    "pa": "ਕੰਪਿਊਟਰ ਜਾਂਚ ਵਿੱਚ ਡਿਜੀਟਲ ਅਰੈਸਟ ਦੇ ਆਮ ਲੱਛਣ ਨਹੀਂ ਮਿਲੇ। ਕਿਸੇ ਵੀ ਅਣਜਾਣ ਵਿਅਕਤੀ ਦੇ ਕਹਿਣ 'ਤੇ ਪੈਸੇ ਨਾ ਭੇਜੋ, ਅਤੇ ਦਬਾਅ ਹੋਣ 'ਤੇ 1930 'ਤੇ ਸੰਪਰਕ ਕਰੋ।"
+}
+
+IMAGE_OFFLINE_MESSAGE: Dict[str, str] = {
+    "en": "Image reading is offline; please paste the text.",
+    "hi": "इमेज पढ़ने की सेवा अभी ऑफलाइन है; कृपया संदेश का टेक्स्ट कॉपी करके पेस्ट करें।",
+    "pa": "ਤਸਵੀਰ ਪੜ੍ਹਨ ਦੀ ਸੇਵਾ ਹਾਲੇ ਆਫ਼ਲਾਈਨ ਹੈ; ਕਿਰਪਾ ਕਰਕੇ ਸੁਨੇਹੇ ਦਾ ਟੈਕਸਟ ਕਾਪੀ ਕਰਕੇ ਪੇਸਟ ਕਰੋ।"
+}
+
+PLAIN_SUMMARY_FALLBACK: Dict[str, Dict[str, str]] = {
+    "likely_scam": {
+        "en": "Warning: This message shows clear signs of a digital arrest scam. Real police or court officials never arrest people over video calls or demand money. Please hang up immediately, speak with your family, and call helpline 1930.",
+        "hi": "जरूरी चेतावनी: इस संदेश में डिजिटल अरेस्ट धोखाधड़ी के पक्के लक्षण हैं। असली पुलिस या जज कभी भी वीडियो कॉल पर गिरफ्तारी नहीं करते और न ही पैसे मांगते हैं। कृपया तुरंत फोन काटें, अपने परिवार को बताएं और 1930 पर फोन करें।",
+        "pa": "ਜ਼ਰੂਰੀ ਚੇਤਾਵਨੀ: ਇਸ ਸੁਨੇਹੇ ਵਿੱਚ ਡਿਜੀਟਲ ਅਰੈਸਟ ਠੱਗੀ ਦੇ ਪੱਕੇ ਲੱਛਣ ਹਨ। ਅਸਲੀ ਪੁਲਿਸ ਜਾਂ ਜੱਜ ਕਦੇ ਵੀ ਵੀਡੀਓ ਕਾਲ 'ਤੇ ਗ੍ਰਿਫ਼ਤਾਰੀ ਨਹੀਂ ਕਰਦੇ ਅਤੇ ਨਾ ਹੀ ਪੈਸੇ ਮੰਗਦੇ ਹਨ। ਕਿਰਪਾ ਕਰਕੇ ਤੁਰੰਤ ਫੋਨ ਕੱਟੋ, ਆਪਣੇ ਪਰਿਵਾਰ ਨੂੰ ਦੱਸੋ ਅਤੇ 1930 'ਤੇ ਫੋਨ ਕਰੋ।"
+    },
+    "suspicious": {
+        "en": "Caution: This message contains suspicious official claims or urgent payment demands. Do not transfer any money or disclose private information without independently verifying directly with local authorities.",
+        "hi": "सावधानी: इस संदेश में संदिग्ध सरकारी दावे या पैसों की जल्दबाजी भरी मांग है। स्थानीय अधिकारियों या बैंक से सीधे जांच किए बिना कोई पैसा न भेजें और न ही अपनी निजी जानकारी साझा करें।",
+        "pa": "ਸਾਵਧਾਨੀ: ਇਸ ਸੁਨੇਹੇ ਵਿੱਚ ਸ਼ੱਕੀ ਸਰਕਾਰੀ ਦਾਅਵੇ ਜਾਂ ਪੈਸਿਆਂ ਦੀ ਕਾਹਲੀ ਭਰੀ ਮੰਗ ਹੈ। ਸਥਾਨਕ ਅਧਿਕਾਰੀਆਂ ਜਾਂ ਬੈਂਕ ਤੋਂ ਸਿੱਧੀ ਜਾਂਚ ਕੀਤੇ ਬਿਨਾਂ ਕੋਈ ਪੈਸੇ ਨਾ ਭੇਜੋ ਅਤੇ ਨਾ ਹੀ ਨਿੱਜੀ ਜਾਣਕਾਰੀ ਦਿਓ।"
+    },
+    "cannot_verify": {
+        "en": "Notice: Common digital arrest patterns were not found, but always remain vigilant. Government agencies will never rush you or ask for secret money transfers. If pressured, dial 1930.",
+        "hi": "सूचना: सामान्य धोखाधड़ी के संकेत नहीं मिले हैं, फिर भी सतर्क रहें। सरकारी विभाग कभी भी फोन पर जल्दबाजी नहीं कराते और न ही किसी गोपनीय खाते में पैसे मांगते हैं। यदि कोई दबाव डाले तो 1930 मिलाएं।",
+        "pa": "ਸੂਚਨਾ: ਆਮ ਠੱਗੀ ਦੇ ਸੰਕੇਤ ਨਹੀਂ ਮਿਲੇ, ਫਿਰ ਵੀ ਹਮੇਸ਼ਾ ਚੌਕਸ ਰਹੋ। ਸਰਕਾਰੀ ਵਿਭਾਗ ਕਦੇ ਵੀ ਫੋਨ 'ਤੇ ਕਾਹਲੀ ਨਹੀਂ ਕਰਵਾਉਂਦੇ ਅਤੇ ਨਾ ਹੀ ਕਿਸੇ ਗੁਪਤ ਖਾਤੇ ਵਿੱਚ ਪੈਸੇ ਮੰਗਦੇ ਹਨ। ਜੇਕਰ ਕੋਈ ਦਬਾਅ ਪਾਵੇ ਤਾਂ 1930 ਡਾਇਲ ਕਰੋ।"
+    }
 }
 
 VERDICT_SUMMARIES: Dict[str, Dict[str, str]] = {
     "likely_scam": {
         "en": "High probability of digital arrest fraud detected. Immediate protective action required.",
-        "hi": "डिजिटल अरेस्ट धोखाधड़ी की अत्यधिक संभावना। तुरंत सुरक्षात्मक कदम उठाएं।",
-        "pa": "ਡਿਜੀਟਲ ਅਰੈਸਟ ਧੋਖਾਧੜੀ ਦੀ ਬਹੁਤ ਜ਼ਿਆਦਾ ਸੰਭਾਵਨਾ। ਤੁਰੰਤ ਬਚਾਅ ਦੇ ਕਦਮ ਚੁੱਕੋ।"
+        "hi": "डिजिटल अरेस्ट धोखाधड़ी की पूरी संभावना। तुरंत बात बंद करें और सुरक्षात्मक कदम उठाएं।",
+        "pa": "ਡਿਜੀਟਲ ਅਰੈਸਟ ਧੋਖਾਧੜੀ ਦੀ ਪੂਰੀ ਸੰਭਾਵਨਾ। ਤੁਰੰਤ ਗੱਲਬਾਤ ਬੰਦ ਕਰੋ ਅਤੇ ਬਚਾਅ ਦੇ ਕਦਮ ਚੁੱਕੋ।"
     },
     "suspicious": {
         "en": "Suspicious coercion or impersonation elements detected. Do not comply without official verification.",
-        "hi": "संदिग्ध दबाव या फर्जी पहचान के संकेत मिले हैं। बिना आधिकारिक पुष्टि के कोई कदम न उठाएं।",
-        "pa": "ਸ਼ੱਕੀ ਦਬਾਅ ਜਾਂ ਨਕਲੀ ਅਧਿਕਾਰੀ ਹੋਣ ਦੇ ਸੰਕੇਤ ਮਿਲੇ ਹਨ। ਬਿਨਾਂ ਸਰਕਾਰੀ ਪੁਸ਼ਟੀ ਦੇ ਕੋਈ ਕੰਮ ਨਾ ਕਰੋ।"
+        "hi": "संदिग्ध दबाव और फर्जी पहचान के संकेत मिले हैं। बिना आधिकारिक पुष्टि के कोई कदम न उठाएं।",
+        "pa": "ਸ਼ੱਕੀ ਦਬਾਅ ਅਤੇ ਨਕਲੀ ਪਛਾਣ ਦੇ ਸੰਕੇਤ ਮਿਲੇ ਹਨ। ਬਿਨਾਂ ਸਰਕਾਰੀ ਪੁਸ਼ਟੀ ਦੇ ਕੋਈ ਕੰਮ ਨਾ ਕਰੋ।"
     },
     "cannot_verify": {
         "en": "No clear digital arrest patterns identified. Exercise caution and verify via 1930 if unsure.",
@@ -51,21 +76,21 @@ RULES_METADATA: Dict[str, Dict[str, Any]] = {
         },
         "why": {
             "en": "'Digital arrest' has zero legal basis in Indian law. The Supreme Court of India took suo motu cognisance on 17 Oct 2025, confirming no agency can arrest anyone online or over video calls.",
-            "hi": "भारतीय कानून में 'डिजिटल अरेस्ट' का कोई अस्तित्व नहीं है। सुप्रीम कोर्ट (17 अक्टूबर 2025) ने स्पष्ट किया है कि कोई भी पुलिस या जांच एजेंसी वीडियो कॉल पर गिरफ्तारी नहीं कर सकती।",
-            "pa": "ਭਾਰਤੀ ਕਾਨੂੰਨ ਵਿੱਚ 'ਡਿਜੀਟਲ ਅਰੈਸਟ' ਦਾ ਕੋਈ ਕਾਨੂੰਨੀ ਆਧਾਰ ਨਹੀਂ ਹੈ। ਸੁਪਰੀਮ ਕੋਰਟ (17 ਅਕਤੂਬਰ 2025) ਨੇ ਸਪੱਸ਼ਟ ਕੀਤਾ ਹੈ ਕਿ ਕੋਈ ਵੀ ਜਾਂਚ ਏਜੰਸੀ ਵੀਡੀਓ ਕਾਲ 'ਤੇ ਗ੍ਰਿਫ਼ਤਾਰੀ ਨਹੀਂ ਕਰ ਸਕਦੀ।"
+            "hi": "भारतीय कानून में 'डिजिटल अरेस्ट' नाम की कोई चीज नहीं है। सुप्रीम कोर्ट (17 अक्टूबर 2025) ने साफ किया है कि कोई भी पुलिस या जांच एजेंसी वीडियो कॉल पर कभी गिरफ्तारी नहीं कर सकती।",
+            "pa": "ਭਾਰਤੀ ਕਾਨੂੰਨ ਵਿੱਚ 'ਡਿਜੀਟਲ ਅਰੈਸਟ' ਨਾਂ ਦਾ ਕੋਈ ਕਾਨੂੰਨ ਨਹੀਂ ਹੈ। ਸੁਪਰੀਮ ਕੋਰਟ (17 ਅਕਤੂਬਰ 2025) ਨੇ ਸਾਫ਼ ਕੀਤਾ ਹੈ ਕਿ ਕੋਈ ਵੀ ਜਾਂਚ ਏਜੰਸੀ ਵੀਡੀਓ ਕਾਲ 'ਤੇ ਕਦੇ ਗ੍ਰਿਫ਼ਤਾਰੀ ਨਹੀਂ ਕਰ ਸਕਦੀ।"
         },
         "source_url": OFFICIAL_SOURCES["supreme_court"]
     },
     "R02": {
         "title": {
             "en": "Forced Video Call / Continuous Surveillance",
-            "hi": "वीडियो कॉल पर रहने या कैमरा ऑन रखने का दबाव",
+            "hi": "वीडियो कॉल पर रहने या कैमरा चालू रखने का दबाव",
             "pa": "ਵੀਡੀਓ ਕਾਲ 'ਤੇ ਰਹਿਣ ਜਾਂ ਕੈਮਰਾ ਚਾਲੂ ਰੱਖਣ ਦਾ ਦਬਾਅ"
         },
         "why": {
             "en": "Law enforcement agencies never demand citizens remain on 24x7 Skype/WhatsApp video calls or keep cameras turned on.",
-            "hi": "कानूनी जांच एजेंसियां कभी भी नागरिकों को स्काइप या व्हाट्सएप वीडियो कॉल पर बंधक नहीं बनातीं और न ही लगातार कैमरा ऑन रखने को कहती हैं।",
-            "pa": "ਕਾਨੂੰਨੀ ਜਾਂਚ ਏਜੰਸੀਆਂ ਕਦੇ ਵੀ ਨਾਗਰਿਕਾਂ ਨੂੰ ਸਕਾਈਪ ਜਾਂ ਵਟਸਐਪ ਵੀਡੀਓ ਕਾਲ 'ਤੇ ਬੰਧਕ ਨਹੀਂ ਬਣਾਉਂਦੀਆਂ ਜਾਂ ਕੈਮਰਾ ਚਾਲੂ ਰੱਖਣ ਲਈ ਮਜਬੂਰ ਨਹੀਂ ਕਰਦੀਆਂ।"
+            "hi": "असली पुलिस या जांच अधिकारी कभी भी नागरिकों को वीडियो कॉल पर बंधक नहीं बनाते और न ही कैमरा चालू रखने का दबाव डालते हैं।",
+            "pa": "ਅਸਲੀ ਪੁਲਿਸ ਜਾਂ ਜਾਂਚ ਅਧਿਕਾਰੀ ਕਦੇ ਵੀ ਨਾਗਰਿਕਾਂ ਨੂੰ ਵੀਡੀਓ ਕਾਲ 'ਤੇ ਬੰਧਕ ਨਹੀਂ ਬਣਾਉਂਦੇ ਅਤੇ ਨਾ ਹੀ ਕੈਮਰਾ ਚਾਲੂ ਰੱਖਣ ਲਈ ਮਜਬੂਰ ਕਰਦੇ ਹਨ।"
         },
         "source_url": OFFICIAL_SOURCES["cybercrime"]
     },
@@ -78,15 +103,15 @@ RULES_METADATA: Dict[str, Dict[str, Any]] = {
         "why": {
             "en": "Fraudsters impersonate high-profile agencies (CBI, ED, Narcotics, Police, TRAI) to create overwhelming psychological pressure.",
             "hi": "धोखेबाज डर और घबराहट पैदा करने के लिए सीबीआई, ईडी, नारकोटिक्स, पुलिस या ट्राई जैसी शीर्ष एजेंसियों के फर्जी अधिकारी बनते हैं।",
-            "pa": "ਠੱਗ ਡਰ ਦਾ ਮਾਹੌਲ ਬਣਾਉਣ ਲਈ ਸੀਬੀਆਈ, ਈਡੀ, ਪੁਲਿਸ ਜਾਂ ਟਰਾਈ ਵਰਗੀਆਂ ਪ੍ਰਮੁੱਖ ਏਜੰਸੀਆਂ ਦੇ ਅਧਿਕਾਰੀ ਬਣ ਕੇ ਗੱਲ ਕਰਦੇ ਹਨ।"
+            "pa": "ਠੱਗ ਡਰ ਪੈਦਾ ਕਰਨ ਲਈ ਸੀਬੀਆਈ, ਈਡੀ, ਨਾਰਕੋਟਿਕਸ, ਪੁਲਿਸ ਜਾਂ ਟਰਾਈ ਵਰਗੀਆਂ ਵੱਡੀਆਂ ਏਜੰਸੀਆਂ ਦੇ ਨਕਲੀ ਅਧਿਕਾਰੀ ਬਣ ਕੇ ਗੱਲ ਕਰਦੇ ਹਨ।"
         },
         "source_url": OFFICIAL_SOURCES["cybercrime"]
     },
     "R04": {
         "title": {
             "en": "Illegal Parcel / Contraband Courier Claim",
-            "hi": "पार्सल में ड्रग्स या गैरकानूनी सामान का झूठा आरोप",
-            "pa": "ਪਾਰਸਲ ਵਿੱਚ ਨਸ਼ੀਲੀਆਂ ਦਵਾਈਆਂ ਜਾਂ ਗੈਰ-ਕਾਨੂੰਨੀ ਸਾਮਾਨ ਦਾ ਝੂਠਾ ਦੋਸ਼"
+            "hi": "पार्सल में नशीला सामान या अवैध पासपोर्ट मिलने का झूठा दावा",
+            "pa": "ਪਾਰਸਲ ਵਿੱਚ ਨਸ਼ੀਲੀਆਂ ਦਵਾਈਆਂ ਜਾਂ ਗੈਰ-ਕਾਨੂੰਨੀ ਪਾਸਪੋਰਟ ਦਾ ਝੂਠਾ ਦਾਅਵਾ"
         },
         "why": {
             "en": "Scammers falsely claim a courier parcel (FedEx/DHL/India Post) in your name contained narcotics, passports, or contraband to initiate extortion.",
@@ -98,21 +123,21 @@ RULES_METADATA: Dict[str, Dict[str, Any]] = {
     "R05": {
         "title": {
             "en": "Financial Demand (Bail / Safe Account / Verification)",
-            "hi": "पैसे की मांग (जमानत / सुरक्षित खाता / सत्यापन शुल्क)",
-            "pa": "ਪੈਸਿਆਂ ਦੀ ਮੰਗ (ਜ਼ਮਾਨਤ / ਸੁਰੱਖਿਅਤ ਖਾਤਾ / ਤਸਦੀਕ ਫੀਸ)"
+            "hi": "पैसे की मांग (जमानत राशि / सुरक्षित खाता / सत्यापन शुल्क)",
+            "pa": "ਪੈਸਿਆਂ ਦੀ ਮੰਗ (ਜ਼ਮਾਨਤ ਰਾਸ਼ੀ / ਸੁਰੱਖਿਅਤ ਖਾਤਾ / ਤਸਦੀਕ ਫੀਸ)"
         },
         "why": {
             "en": "No Indian court or police agency ever demands money transfer to a 'safe account' or takes bail/clearance fee over phone/UPI.",
-            "hi": "भारत की कोई भी अदालत या पुलिस एजेंसी फोन या यूपीआई पर 'सुरक्षित खाते' में पैसे ट्रांसफर करने या सत्यापन शुल्क की मांग नहीं करती।",
-            "pa": "ਭਾਰਤ ਦੀ ਕੋਈ ਵੀ ਅਦਾਲਤ ਜਾਂ ਪੁਲਿਸ ਫ਼ੋਨ ਜਾਂ ਯੂਪੀਆਈ 'ਤੇ 'ਸੁਰੱਖਿਅਤ ਖਾਤੇ' ਵਿੱਚ ਪੈਸੇ ਮੰਗਣ ਜਾਂ ਜ਼ਮਾਨਤ ਰਾਸ਼ੀ ਟਰਾਂਸਫਰ ਕਰਨ ਲਈ ਨਹੀਂ ਕਹਿੰਦੀ।"
+            "hi": "भारत की कोई भी अदालत या पुलिस एजेंसी फोन या चैट पर किसी 'सुरक्षित खाते' में पैसे ट्रांसफर करने या सत्यापन शुल्क की मांग नहीं करती।",
+            "pa": "ਭਾਰਤ ਦੀ ਕੋਈ ਵੀ ਅਦਾਲਤ ਜਾਂ ਪੁਲਿਸ ਫ਼ੋਨ ਜਾਂ ਚੈਟ 'ਤੇ ਕਿਸੇ 'ਸੁਰੱਖਿਅਤ ਖਾਤੇ' ਵਿੱਚ ਪੈਸੇ ਟਰਾਂਸਫਰ ਕਰਨ ਜਾਂ ਜ਼ਮਾਨਤ ਰਾਸ਼ੀ ਮੰਗਣ ਦਾ ਕੰਮ ਨਹੀਂ ਕਰਦੀ।"
         },
         "source_url": OFFICIAL_SOURCES["cybercrime"]
     },
     "R06": {
         "title": {
             "en": "Isolation & Secrecy Mandate",
-            "hi": "गोपनीयता और किसी को न बताने का दबाव",
-            "pa": "ਗੁਪਤਤਾ ਅਤੇ ਕਿਸੇ ਨੂੰ ਨਾ ਦੱਸਣ ਦਾ ਦਬਾਅ"
+            "hi": "गोपनीयता और परिवार को न बताने का दबाव",
+            "pa": "ਗੁਪਤਤਾ ਅਤੇ ਪਰਿਵਾਰ ਤੋਂ ਗੱਲ ਲੁਕਾਉਣ ਦਾ ਦਬਾਅ"
         },
         "why": {
             "en": "Scammers forbid telling family or closing the room door to isolate you psychologically and prevent third-party intervention.",
@@ -124,8 +149,8 @@ RULES_METADATA: Dict[str, Dict[str, Any]] = {
     "R07": {
         "title": {
             "en": "Artificial Urgency & Arrest Deadline",
-            "hi": "तत्काल गिरफ्तारी या सिम ब्लॉक करने की समयसीमा",
-            "pa": "ਤੁਰੰਤ ਗ੍ਰਿਫ਼ਤਾਰੀ ਜਾਂ ਸਿਮ ਬਲਾਕ ਕਰਨ ਦੀ ਸਮਾਂ ਸੀਮਾ"
+            "hi": "तत्काल गिरफ्तारी या सिम ब्लॉक करने की झूठी समयसीमा",
+            "pa": "ਤੁਰੰਤ ਗ੍ਰਿਫ਼ਤਾਰੀ ਜਾਂ ਸਿਮ ਬਲਾਕ ਕਰਨ ਦੀ ਝੂਠੀ ਸਮਾਂ ਸੀਮਾ"
         },
         "why": {
             "en": "Imposing artificial deadlines (e.g. 'arrest in 2 hours', 'SIM disconnection in 1 hour') aims to bypass rational thinking.",
@@ -163,13 +188,13 @@ RULES_METADATA: Dict[str, Dict[str, Any]] = {
     "R10": {
         "title": {
             "en": "OTP Demand / Remote Desktop Software (AnyDesk/TeamViewer)",
-            "hi": "ओटीपी की मांग या रिमोट एक्सेस ऐप (AnyDesk/TeamViewer)",
-            "pa": "ਓਟੀਪੀ ਦੀ ਮੰਗ ਜਾਂ ਰਿਮੋਟ ਐਕਸੈਸ ਐਪ (AnyDesk/TeamViewer)"
+            "hi": "ओटीपी की मांग या स्क्रीन शेयरिंग ऐप (AnyDesk/TeamViewer)",
+            "pa": "ਓਟੀਪੀ ਦੀ ਮੰਗ ਜਾਂ ਸਕ੍ਰੀਨ ਸ਼ੇਅਰਿੰਗ ਐਪ (AnyDesk/TeamViewer)"
         },
         "why": {
             "en": "No authentic police or bank personnel will ever ask for OTPs or instruct you to install AnyDesk, TeamViewer, or QuickSupport.",
-            "hi": "कोई भी असली पुलिस या बैंक अधिकारी कभी ओटीपी नहीं मांगता और न ही AnyDesk या TeamViewer जैसे ऐप इंस्टॉल करने को कहता है।",
-            "pa": "ਕੋਈ ਵੀ ਅਸਲ ਪੁਲਿਸ ਜਾਂ ਬੈਂਕ ਅਧਿਕਾਰੀ ਕਦੇ ਓਟੀਪੀ ਨਹੀਂ ਮੰਗਦਾ ਅਤੇ ਨਾ ਹੀ AnyDesk ਜਾਂ TeamViewer ਵਰਗੇ ਐਪ ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਕਹਿੰਦਾ ਹੈ।"
+            "hi": "कोई भी असली पुलिस या बैंक अधिकारी कभी फोन पर ओटीपी नहीं मांगता और न ही AnyDesk या TeamViewer जैसे ऐप इंस्टॉल करने को कहता है।",
+            "pa": "ਕੋਈ ਵੀ ਅਸਲੀ ਪੁਲਿਸ ਜਾਂ ਬੈਂਕ ਅਧਿਕਾਰੀ ਕਦੇ ਫੋਨ 'ਤੇ ਓਟੀਪੀ ਨਹੀਂ ਮੰਗਦਾ ਅਤੇ ਨਾ ਹੀ AnyDesk ਜਾਂ TeamViewer ਵਰਗੇ ਐਪ ਇੰਸਟਾਲ ਕਰਨ ਲਈ ਕਹਿੰਦਾ ਹੈ।"
         },
         "source_url": OFFICIAL_SOURCES["cybercrime"]
     },
@@ -189,25 +214,25 @@ RULES_METADATA: Dict[str, Dict[str, Any]] = {
     "R12": {
         "title": {
             "en": "Official Contact via WhatsApp / Skype / Telegram",
-            "hi": "व्हाट्सएप, स्काइप या टेलीग्राम पर आधिकारिक संपर्क का दावा",
-            "pa": "ਵਟਸਐਪ, ਸਕਾਈਪ ਜਾਂ ਟੈਲੀਗ੍ਰਾਮ 'ਤੇ ਅਧਿਕਾਰਤ ਸੰਪਰਕ ਦਾ ਦਾਅਵਾ"
+            "hi": "व्हाट्सएप, स्काइप या टेलीग्राम पर पुलिस संपर्क का दावा",
+            "pa": "ਵਟਸਐਪ, ਸਕਾਈਪ ਜਾਂ ਟੈਲੀਗ੍ਰਾਮ 'ਤੇ ਪੁਲਿਸ ਸੰਪਰਕ ਦਾ ਦਾਅਵਾ"
         },
         "why": {
             "en": "Indian law enforcement never sends summons, takes statements, or issues court orders over WhatsApp or Skype personal messages.",
-            "hi": "भारतीय कानून प्रवर्तन एजेंसियां कभी भी व्हाट्सएप, स्काइप या टेलीग्राम पर समन नहीं भेजतीं और न ही बयान दर्ज करती हैं।",
-            "pa": "ਭਾਰਤੀ ਜਾਂਚ ਏਜੰਸੀਆਂ ਕਦੇ ਵੀ ਵਟਸਐਪ, ਸਕਾਈਪ ਜਾਂ ਟੈਲੀਗ੍ਰਾਮ ਰਾਹੀਂ ਸੰਮਨ ਨਹੀਂ ਭੇਜਦੀਆਂ ਅਤੇ ਨਾ ਹੀ ਬਿਆਨ ਲੈਂਦੀਆਂ ਹਨ।"
+            "hi": "भारतीय कानून प्रवर्तन एजेंसियां कभी भी व्हाट्सएप, स्काइप या टेलीग्राम पर कानूनी नोटिस नहीं भेजतीं और न ही बयान दर्ज करती हैं।",
+            "pa": "ਭਾਰਤੀ ਜਾਂਚ ਏਜੰਸੀਆਂ ਕਦੇ ਵੀ ਵਟਸਐਪ, ਸਕਾਈਪ ਜਾਂ ਟੈਲੀਗ੍ਰਾਮ ਰਾਹੀਂ ਕਾਨੂੰਨੀ ਨੋਟਿਸ ਨਹੀਂ ਭੇਜਦੀਆਂ ਅਤੇ ਨਾ ਹੀ ਬਿਆਨ ਲੈਂਦੀਆਂ ਹਨ।"
         },
         "source_url": OFFICIAL_SOURCES["cybercrime"]
     },
     "R13": {
         "title": {
             "en": "Forged Notice / Arrest Warrant Sent via Chat",
-            "hi": "चैट पर भेजा गया फर्जी जब्ती या गिरफ्तारी वारंट",
-            "pa": "ਚੈਟ 'ਤੇ ਭੇਜਿਆ ਗਿਆ ਜਾਅਲੀ ਜ਼ਬਤੀ ਜਾਂ ਗ੍ਰਿਫ਼ਤਾਰੀ ਵਾਰੰਟ"
+            "hi": "व्हाट्सएप चैट पर भेजा गया फर्जी जब्ती या गिरफ्तारी वारंट",
+            "pa": "ਵਟਸਐਪ ਚੈਟ 'ਤੇ ਭੇਜਿਆ ਗਿਆ ਜਾਅਲੀ ਜ਼ਬਤੀ ਜਾਂ ਗ੍ਰਿਫ਼ਤਾਰੀ ਵਾਰੰਟ"
         },
         "why": {
             "en": "Warrants and bank freeze orders are served physically through legal summons, never as PDFs or images transmitted over social chat apps.",
-            "hi": "अदालत या पुलिस के गिरफ्तारी वारंट और खाता सीज आदेश डाक या पुलिस द्वारा व्यक्तिगत रूप से दिए जाते हैं, व्हाट्सएप चैट पर नहीं।",
+            "hi": "अदालत या पुलिस के गिरफ्तारी वारंट और खाता सीज आदेश डाक या पुलिस द्वारा व्यक्तिगत रूप से दिए जाते हैं, व्हाट्सएप चैट पर फोटो भेजकर नहीं।",
             "pa": "ਅਦਾਲਤੀ ਵਾਰੰਟ ਅਤੇ ਖਾਤਾ ਫਰੀਜ਼ ਕਰਨ ਦੇ ਹੁਕਮ ਵਿਅਕਤੀਗਤ ਤੌਰ 'ਤੇ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ, ਵਟਸਐਪ ਚੈਟ 'ਤੇ ਫੋਟੋਆਂ ਭੇਜ ਕੇ ਨਹੀਂ।"
         },
         "source_url": OFFICIAL_SOURCES["cybercrime"]
@@ -215,8 +240,8 @@ RULES_METADATA: Dict[str, Dict[str, Any]] = {
     "R14": {
         "title": {
             "en": "Money Laundering / High-Profile Financial Scam Allegation",
-            "hi": "मनी लॉन्ड्रिंग या हाई-प्रोफाइल बैंक घोटाले का आरोप",
-            "pa": "ਮਨੀ ਲਾਂਡਰਿੰਗ ਜਾਂ ਵੱਡੇ ਬੈਂਕ ਘੁਟਾਲੇ ਦਾ ਦੋਸ਼"
+            "hi": "मनी लॉन्ड्रिंग या बड़े बैंक घोटाले का झूठा आरोप",
+            "pa": "ਮਨੀ ਲਾਂਡਰਿੰਗ ਜਾਂ ਵੱਡੇ ਬੈਂਕ ਘੁਟਾਲੇ ਦਾ ਝੂਠਾ ਦੋਸ਼"
         },
         "why": {
             "en": "Scammers fabricate links to high-profile cases (e.g. Canara Bank, Naresh Goyal, hawala rackets) to frighten targets into compliance.",
@@ -269,20 +294,20 @@ ACTION_STEPS: Dict[str, List[Dict[str, Any]]] = {
     "hi": [
         {
             "step": 1,
-            "title": "तुरंत कॉल काटें और संपर्क तोड़ें",
-            "description": "वीडियो कॉल या चैट को तुरंत बंद करें। आगे कोई बात न करें, कोई पैसा न भेजें, ओटीपी साझा न करें और कोई ऐप डाउनलोड न करें।",
+            "title": "तुरंत कॉल काटें और बातचीत बंद करें",
+            "description": "वीडियो कॉल या चैट को तुरंत बंद करें। आगे कोई बात न करें, कोई पैसा न भेजें, ओटीपी न बताएं और कोई ऐप डाउनलोड न करें।",
             "timebox_min": 2
         },
         {
             "step": 2,
             "title": "राष्ट्रीय साइबर हेल्पलाइन 1930 पर तुरंत कॉल करें",
-            "description": "अपने फोन से तुरंत 1930 डायल करें और बताएं कि आपके साथ डिजिटल अरेस्ट धोखाधड़ी की कोशिश की जा रही है।",
+            "description": "अपने फोन से तुरंत 1930 डायल करें और बताएं कि आपके साथ डिजिटल अरेस्ट धोखाधड़ी की कोशिश हो रही है।",
             "timebox_min": 3
         },
         {
             "step": 3,
             "title": "cybercrime.gov.in पर आधिकारिक शिकायत दर्ज करें",
-            "description": "cybercrime.gov.in पोर्टल पर जाएं और घटना का विवरण देते हुए साइबर फ्रॉड की आधिकारिक शिकायत दर्ज करें।",
+            "description": "cybercrime.gov.in पोर्टल पर जाएं और घटना का पूरा विवरण देते हुए साइबर फ्रॉड की आधिकारिक शिकायत दर्ज करें।",
             "timebox_min": 5
         },
         {
@@ -385,7 +410,7 @@ DRAFT_TEMPLATES: Dict[str, Dict[str, str]] = {
             "कृपया मामले की त्वरित जांच कर सख्त कानूनी कार्रवाई करें।"
         ),
         "script_1930": (
-            "1. नमस्ते, मैं एक फर्जी 'डिजिटल अरेस्ट' जबरन वसूली की शिकायत दर्ज कराना चाहता/चाहती हूँ।\n"
+            "1. नमस्ते, मैं 'डिजिटल अरेस्ट' के नाम पर हो रही जबरन वसूली की शिकायत दर्ज कराना चाहता/चाहती हूँ।\n"
             "2. फोन करने वाले ने खुद को {agency} का अधिकारी बताया।\n"
             "3. उसने वीडियो कॉल पर तत्काल गिरफ्तारी की धमकी देकर पैसे और सत्यापन की मांग की।\n"
             "4. धोखेबाज का विवरण: फोन/यूपीआई: {caller_or_upi}, मांगी गई राशि: {amount_or_details}।\n"
@@ -411,7 +436,7 @@ DRAFT_TEMPLATES: Dict[str, Dict[str, str]] = {
             "ਕ੍ਰਿਪਾ ਕਰਕੇ ਤੁਰੰਤ ਕਾਰਵਾਈ ਕੀਤੀ ਜਾਵੇ।"
         ),
         "script_1930": (
-            "1. ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ, ਮੈਂ ਇੱਕ ਫਰਜ਼ੀ 'ਡਿਜੀਟਲ ਅਰੈਸਟ' ਦੀ ਸ਼ਿਕਾਇਤ ਦਰਜ ਕਰਵਾਉਣੀ ਹੈ।\n"
+            "1. ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ ਜੀ, ਮੈਂ ਇੱਕ ਫਰਜ਼ੀ 'ਡਿਜੀਟਲ ਅਰੈਸਟ' ਦੀ ਸ਼ਿਕਾਇਤ ਦਰਜ ਕਰਵਾਉਣੀ ਹੈ।\n"
             "2. ਫੋਨ ਕਰਨ ਵਾਲੇ ਨੇ ਖੁਦ ਨੂੰ {agency} ਦਾ ਅਧਿਕਾਰੀ ਦੱਸਿਆ।\n"
             "3. ਉਸਨੇ ਵੀਡੀਓ ਕਾਲ 'ਤੇ ਤੁਰੰਤ ਗ੍ਰਿਫ਼ਤਾਰੀ ਦੀ ਧਮਕੀ ਦੇ ਕੇ ਪੈਸਿਆਂ ਦੀ ਮੰਗ ਕੀਤੀ।\n"
             "4. ਠੱਗ ਦੇ ਵੇਰਵੇ: ਫੋਨ/ਯੂਪੀਆਈ: {caller_or_upi}, ਮੰਗੀ ਗਈ ਰਕਮ: {amount_or_details}।\n"

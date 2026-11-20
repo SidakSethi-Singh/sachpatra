@@ -1,4 +1,4 @@
-from typing import Literal, Optional
+from typing import List, Literal, Optional
 from pydantic import BaseModel, Field, field_validator
 
 
@@ -30,6 +30,16 @@ class Drafts(BaseModel):
     family_alert: str = Field(..., description="WhatsApp-ready alert message for family")
 
 
+class ExtractedImageContent(BaseModel):
+    text: str = Field(default="", description="Transcribed text from notice or document")
+    claimed_agency: str = Field(default="", description="Agency or department claimed in the document")
+    sender: str = Field(default="", description="Alleged sender, officer name, or contact handle")
+    links: List[str] = Field(default_factory=list, description="Extracted URLs, domains, or short links")
+    amounts: List[str] = Field(default_factory=list, description="Monetary figures demanded or mentioned")
+    doc_type: str = Field(default="", description="Detected document classification (e.g., Notice, Warrant, Court Order)")
+    has_seal_or_signature: bool = Field(default=False, description="Presence of official-looking stamps, seals, or emblems")
+
+
 class AnalyzeResponse(BaseModel):
     verdict: Literal["likely_scam", "suspicious", "cannot_verify"]
     score: int = Field(..., ge=0, le=100, description="Risk score between 0 and 100")
@@ -39,6 +49,9 @@ class AnalyzeResponse(BaseModel):
     action_plan: list[ActionStep]
     drafts: Drafts
     disclaimer: str
+    plain_summary: str = Field(default="", description="Plain-language explanation for elderly/general citizens")
+    engine: Literal["rules", "rules+gemini"] = Field(default="rules", description="Screening pipeline indicator")
+    extracted: Optional[ExtractedImageContent] = Field(default=None, description="Metadata extracted by multimodal layer if image uploaded")
 
     @field_validator("verdict")
     @classmethod
