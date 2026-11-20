@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#0a192f">
+  <meta name="description" content="SachPatra: Citizen Digital Arrest and Cyber Extortion Screening Engine. Immediate verdict, 10-minute emergency action plan, and reporting drafts.">
+  <title>सचपत्र | SachPatra — Digital Arrest Scam Shield</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <!-- Skip link for keyboard accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner container">
+      <div class="brand">
+        <div class="brand-emblem" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="brand-titles">
+          <h1 class="brand-name" data-i18n="app_title">सचपत्र <span class="brand-sub">SachPatra</span></h1>
+          <p class="brand-tagline" data-i18n="app_tagline">Citizen Digital Arrest & Cyber Extortion Shield</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <!-- Language Switcher -->
+        <div class="lang-switch" role="group" aria-label="Language Selector">
+          <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" class="lang-btn" data-lang="hi" aria-pressed="false">हिं</button>
+          <button type="button" class="lang-btn" data-lang="pa" aria-pressed="false">ਪੰ</button>
+        </div>
+
+        <!-- Emergency Helpline Badge -->
+        <a href="tel:1930" class="emergency-badge" aria-label="Call National Cyber Helpline 1930">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span class="helpline-text">1930</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-bar container" role="navigation" aria-label="Main Navigation">
+      <button type="button" class="nav-tab active" data-tab="tab-check" id="nav-tab-check" role="tab" aria-selected="true" aria-controls="tab-check">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <span data-i18n="tab_check">Check</span>
+      </button>
+      <button type="button" class="nav-tab" data-tab="tab-dashboard" id="nav-tab-dashboard" role="tab" aria-selected="false" aria-controls="tab-dashboard">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="12" width="4" height="9"/><rect x="10" y="7" width="4" height="14"/><rect x="17" y="3" width="4" height="18"/></svg>
+        <span data-i18n="tab_dashboard">Dashboard</span>
+      </button>
+      <button type="button" class="nav-tab" data-tab="tab-transparency" id="nav-tab-transparency" role="tab" aria-selected="false" aria-controls="tab-transparency">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        <span data-i18n="tab_how_it_works">How It Works</span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <main id="main-content" class="container main-content" role="main">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: CHECK SCREEN                       -->
+    <!-- ========================================== -->
+    <section id="tab-check" class="tab-pane active" role="tabpanel" aria-labelledby="nav-tab-check">
+      
+      <!-- Law Enforcement Advisory Banner -->
+      <div class="gov-warning-card" role="region" aria-label="Official Warning">
+        <div class="warning-icon" aria-hidden="true">⚠️</div>
+        <div class="warning-text">
+          <strong data-i18n="gov_warning_title">Supreme Court of India Ruling:</strong>
+          <span data-i18n="gov_warning_body">"Digital Arrest" has zero legal validity in India. Police, CBI, ED, and courts NEVER arrest citizens online or demand money on video calls.</span>
+        </div>
+      </div>
+
+      <!-- Checker Box Card -->
+      <div class="card check-card">
+        <!-- Input Mode Switcher -->
+        <div class="input-modes" role="tablist" aria-label="Input Modes">
+          <button type="button" class="mode-btn active" data-mode="text" role="tab" aria-selected="true" id="mode-text">
+            <span class="mode-icon" aria-hidden="true">💬</span>
+            <span data-i18n="mode_text">Paste Message</span>
+          </button>
+          <button type="button" class="mode-btn" data-mode="image" role="tab" aria-selected="false" id="mode-image">
+            <span class="mode-icon" aria-hidden="true">📷</span>
+            <span data-i18n="mode_image">Upload Notice Photo</span>
+          </button>
+          <button type="button" class="mode-btn" data-mode="call" role="tab" aria-selected="false" id="mode-call">
+            <span class="mode-icon" aria-hidden="true">📞</span>
+            <span data-i18n="mode_call">Describe a Call</span>
+          </button>
+        </div>
+
+        <!-- Sample Quick-Fill Chips -->
+        <div class="sample-chips-row">
+          <span class="sample-label" data-i18n="samples_label">Quick Test:</span>
+          <div class="sample-chips">
+            <button type="button" class="chip chip-scam" data-sample="scam_cbi" data-i18n="sample_scam_cbi">🚨 CBI Digital Arrest</button>
+            <button type="button" class="chip chip-scam" data-sample="scam_parcel" data-i18n="sample_scam_parcel">📦 FedEx Narcotics</button>
+            <button type="button" class="chip chip-benign" data-sample="benign_otp" data-i18n="sample_benign_otp">✅ Normal Bank OTP</button>
+            <button type="button" class="chip chip-benign" data-sample="benign_bill" data-i18n="sample_benign_bill">💡 Electricity Bill</button>
+          </div>
+        </div>
+
+        <!-- Form for Text and Call mode -->
+        <div id="text-input-area" class="input-area">
+          <label for="input-text" class="sr-only" data-i18n="text_input_label">Notice text, message, or call description</label>
+          <div class="textarea-wrapper">
+            <textarea id="input-text" class="main-textarea" rows="6" maxlength="6000" placeholder="Paste the message, chat screenshot text, or describe what the caller said..." aria-describedby="char-count"></textarea>
+            <div class="textarea-footer">
+              <button type="button" id="btn-clear-text" class="btn-text-clear" title="Clear text" aria-label="Clear text">✕ <span data-i18n="clear_btn">Clear</span></button>
+              <span id="char-count" class="char-count" aria-live="polite">0 / 6000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form for Image upload mode -->
+        <div id="image-input-area" class="input-area hidden">
+          <div class="drop-zone" id="drop-zone" tabindex="0" role="button" aria-label="Upload notice image. Click or drop JPEG, PNG, WebP up to 5MB.">
+            <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" class="file-input-hidden" aria-hidden="true">
+            <div class="drop-zone-content">
+              <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <p class="drop-main" data-i18n="dropzone_main">Tap to select or drop notice photo</p>
+              <p class="drop-sub" data-i18n="dropzone_sub">JPG, PNG, WebP up to 5MB. EXIF stripped in memory.</p>
+            </div>
+          </div>
+
+          <!-- Image Preview -->
+          <div id="image-preview-wrapper" class="image-preview-wrapper hidden">
+            <div class="preview-card">
+              <img id="image-preview" src="" alt="Notice preview" class="image-preview">
+              <div class="preview-meta">
+                <span id="preview-filename" class="preview-filename"></span>
+                <span id="preview-filesize" class="preview-filesize"></span>
+                <button type="button" id="btn-remove-image" class="btn-remove-image" aria-label="Remove image">✕</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Check Action Row -->
+        <div class="check-actions">
+          <button type="button" id="btn-analyze" class="btn-primary btn-large">
+            <span class="btn-spinner hidden" aria-hidden="true"></span>
+            <span class="btn-text" data-i18n="btn_analyze">Check for Digital Arrest</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Loading Skeleton (hidden by default) -->
+      <div id="loading-skeleton" class="loading-skeleton hidden" aria-live="polite" aria-busy="true">
+        <div class="skeleton-header"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-row"></div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- RESULT CONTAINER                          -->
+      <!-- ========================================== -->
+      <div id="result-container" class="result-container hidden" role="region" aria-label="Screening Result">
+        
+        <!-- Big Verdict Card -->
+        <div id="verdict-card" class="verdict-card">
+          <div class="verdict-header">
+            <div id="verdict-icon" class="verdict-icon" aria-hidden="true">🚨</div>
+            <div class="verdict-titles">
+              <span id="verdict-badge" class="verdict-badge">Likely Scam</span>
+              <h2 id="verdict-title" class="verdict-title">Digital Arrest Coercion Detected</h2>
+              <p id="verdict-summary" class="verdict-summary"></p>
+            </div>
+          </div>
+
+          <!-- Score meter row -->
+          <div class="score-row">
+            <div class="score-dial">
+              <svg class="score-svg" viewBox="0 0 100 100" width="100" height="100" aria-hidden="true">
+                <circle class="score-bg" cx="50" cy="50" r="42" stroke-width="12" fill="none"/>
+                <circle id="score-bar" class="score-progress" cx="50" cy="50" r="42" stroke-width="12" fill="none" stroke-dasharray="264" stroke-dashoffset="264"/>
+              </svg>
+              <div class="score-number-wrapper">
+                <span id="score-value" class="score-value">0</span>
+                <span class="score-max">/100</span>
+              </div>
+            </div>
+            <div class="score-legend">
+              <div class="legend-item"><span class="legend-bullet red" aria-hidden="true"></span> <strong>60-100:</strong> <span data-i18n="score_likely">Likely Scam</span></div>
+              <div class="legend-item"><span class="legend-bullet amber" aria-hidden="true"></span> <strong>25-59:</strong> <span data-i18n="score_suspicious">Suspicious</span></div>
+              <div class="legend-item"><span class="legend-bullet grey" aria-hidden="true"></span> <strong>0-24:</strong> <span data-i18n="score_cannot_verify">Cannot Verify</span></div>
+              <span id="engine-tag" class="engine-badge">Engine: Rules</span>
+            </div>
+          </div>
+
+          <!-- Plain Summary / Elderly Explanation Box -->
+          <div class="plain-summary-box">
+            <div class="summary-top">
+              <span class="summary-icon" aria-hidden="true">💡</span>
+              <h3 class="summary-heading" data-i18n="plain_summary_title">Simple Explanation for Citizens</h3>
+              <!-- Voice read-out button -->
+              <button type="button" id="btn-read-aloud" class="btn-voice" aria-label="Read summary aloud">
+                <span class="voice-icon" aria-hidden="true">🔊</span>
+                <span id="voice-btn-text" data-i18n="read_aloud">Read Aloud</span>
+              </button>
+            </div>
+            <p id="plain-summary-text" class="plain-summary-text"></p>
+            <div id="voice-unavailable-note" class="voice-note hidden" data-i18n="voice_unavailable">Voice speech output is not supported by your current browser.</div>
+          </div>
+        </div>
+
+        <!-- 10-Minute Action Plan Checklist -->
+        <div class="card action-plan-card">
+          <div class="card-title-row">
+            <span class="title-icon" aria-hidden="true">⏱️</span>
+            <div>
+              <h3 class="card-title" data-i18n="action_plan_title">Do this in the next 10 minutes</h3>
+              <p class="card-subtitle" data-i18n="action_plan_subtitle">Step-by-step emergency protection protocol. Check each as you finish.</p>
+            </div>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <div class="emergency-action-bar">
+            <a href="tel:1930" class="btn-action-call" aria-label="Call National Cyber Helpline 1930">
+              <span class="btn-call-icon" aria-hidden="true">📞</span>
+              <span><strong>Call 1930</strong> (National Helpline)</span>
+            </a>
+            <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="btn-action-portal">
+              <span aria-hidden="true">🌐</span>
+              <span>cybercrime.gov.in</span>
+            </a>
+          </div>
+
+          <div id="action-steps-list" class="action-steps-list" role="list">
+            <!-- Dynamically populated checklist -->
+          </div>
+        </div>
+
+        <!-- "Why We Think So" Accordion -->
+        <div class="card reasons-card">
+          <div class="card-title-row">
+            <span class="title-icon" aria-hidden="true">🔍</span>
+            <div>
+              <h3 class="card-title" data-i18n="why_title">Why We Think So (Detected Red Flags)</h3>
+              <p class="card-subtitle" data-i18n="why_subtitle">Transparent rules matched in your input with authoritative citations.</p>
+            </div>
+          </div>
+          <div id="reasons-accordion" class="accordion-list">
+            <!-- Dynamically populated reasons -->
+          </div>
+        </div>
+
+        <!-- Reporting Drafts in Tabs -->
+        <div class="card drafts-card">
+          <div class="card-title-row">
+            <span class="title-icon" aria-hidden="true">📝</span>
+            <div>
+              <h3 class="card-title" data-i18n="drafts_title">Ready-to-Use Emergency Drafts</h3>
+              <p class="card-subtitle" data-i18n="drafts_subtitle">Pre-filled with extracted facts ready to copy or share immediately.</p>
+            </div>
+          </div>
+
+          <!-- Draft Sub-Tabs -->
+          <div class="draft-tabs" role="tablist" aria-label="Draft Options">
+            <button type="button" class="draft-tab active" data-draft="complaint" role="tab" aria-selected="true" id="tab-draft-complaint" data-i18n="draft_tab_complaint">Portal Complaint</button>
+            <button type="button" class="draft-tab" data-draft="script" role="tab" aria-selected="false" id="tab-draft-script" data-i18n="draft_tab_script">1930 Call Script</button>
+            <button type="button" class="draft-tab" data-draft="family" role="tab" aria-selected="false" id="tab-draft-family" data-i18n="draft_tab_family">Family WhatsApp Alert</button>
+          </div>
+
+          <div class="draft-content-area">
+            <pre id="draft-text" class="draft-text"></pre>
+            <div class="draft-actions">
+              <button type="button" id="btn-copy-draft" class="btn-copy">
+                <span class="copy-icon" aria-hidden="true">📋</span>
+                <span data-i18n="btn_copy">Copy Draft</span>
+              </button>
+              <button type="button" id="btn-share-family" class="btn-share-wa">
+                <span class="share-icon" aria-hidden="true">💬</span>
+                <span data-i18n="btn_share_family">Share Family Alert</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Official Disclaimer Banner -->
+        <div class="disclaimer-footer">
+          <p id="result-disclaimer" class="disclaimer-text">Automated screening, not legal advice. If in doubt, call 1930.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: DASHBOARD SCREEN                   -->
+    <!-- ========================================== -->
+    <section id="tab-dashboard" class="tab-pane hidden" role="tabpanel" aria-labelledby="nav-tab-dashboard">
+      <div class="dashboard-header">
+        <h2 class="dash-title" data-i18n="dash_title">Anonymized Live Dashboard</h2>
+        <p class="dash-sub" data-i18n="dash_sub">Aggregate community metrics. Only counters stored; zero message content or PII is ever retained.</p>
+      </div>
+
+      <!-- Stat Counters Grid -->
+      <div class="stats-counters-grid">
+        <div class="stat-card">
+          <span class="stat-num" id="stat-total-scans">0</span>
+          <span class="stat-label" data-i18n="stat_total">Total Screenings</span>
+        </div>
+        <div class="stat-card stat-card-red">
+          <span class="stat-num" id="stat-scams">0</span>
+          <span class="stat-label" data-i18n="stat_scams">Likely Scams</span>
+        </div>
+        <div class="stat-card stat-card-amber">
+          <span class="stat-num" id="stat-suspicious">0</span>
+          <span class="stat-label" data-i18n="stat_suspicious">Suspicious Cases</span>
+        </div>
+        <div class="stat-card stat-card-grey">
+          <span class="stat-num" id="stat-cannot-verify">0</span>
+          <span class="stat-label" data-i18n="stat_cannot_verify">Unverified / Benign</span>
+        </div>
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="charts-grid">
+        <!-- Chart 1: Verdicts -->
+        <div class="card chart-card">
+          <h3 class="chart-title" data-i18n="chart_verdicts">Screening Verdicts Breakdown</h3>
+          <div id="chart-verdicts-container" class="svg-chart-container">
+            <!-- Inline SVG generated by app.js -->
+          </div>
+        </div>
+
+        <!-- Chart 2: Top Red Flags -->
+        <div class="card chart-card">
+          <h3 class="chart-title" data-i18n="chart_rules">Top Triggered Red Flags</h3>
+          <div id="chart-rules-container" class="svg-chart-container">
+            <!-- Inline SVG generated by app.js -->
+          </div>
+        </div>
+
+        <!-- Chart 3: Languages -->
+        <div class="card chart-card">
+          <h3 class="chart-title" data-i18n="chart_languages">Language Distribution</h3>
+          <div id="chart-languages-container" class="svg-chart-container">
+            <!-- Inline SVG generated by app.js -->
+          </div>
+        </div>
+
+        <!-- Chart 4: 14 Days Activity -->
+        <div class="card chart-card">
+          <h3 class="chart-title" data-i18n="chart_timeline">Last 14 Days Screening Volume</h3>
+          <div id="chart-timeline-container" class="svg-chart-container">
+            <!-- Inline SVG generated by app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: HOW IT WORKS / TRANSPARENCY        -->
+    <!-- ========================================== -->
+    <section id="tab-transparency" class="tab-pane hidden" role="tabpanel" aria-labelledby="nav-tab-transparency">
+      <div class="transparency-header">
+        <h2 class="trans-title" data-i18n="trans_title">Transparency & How SachPatra Works</h2>
+        <p class="trans-sub" data-i18n="trans_sub">Open audit: Complete architecture, rules, and privacy commitments.</p>
+      </div>
+
+      <!-- Core Guarantees Cards -->
+      <div class="guarantees-grid">
+        <div class="card guarantee-card">
+          <div class="guarantee-icon" aria-hidden="true">⚖️</div>
+          <h3 class="guarantee-title" data-i18n="g1_title">1. Deterministic Rule Engine</h3>
+          <p class="guarantee-body" data-i18n="g1_body">Verdicts come ONLY from transparent deterministic rules. AI never decides the verdict and cannot hallucinate a scam status.</p>
+        </div>
+
+        <div class="card guarantee-card">
+          <div class="guarantee-icon" aria-hidden="true">🔒</div>
+          <h3 class="guarantee-title" data-i18n="g2_title">2. Absolute Privacy</h3>
+          <p class="guarantee-body" data-i18n="g2_body">Zero content logging. Neither notice texts nor uploaded images are saved to disk or database. Only anonymous counters are kept.</p>
+        </div>
+
+        <div class="card guarantee-card">
+          <div class="guarantee-icon" aria-hidden="true">🤖</div>
+          <h3 class="guarantee-title" data-i18n="g3_title">3. AI Only Reads & Explains</h3>
+          <p class="guarantee-body" data-i18n="g3_body">Multimodal AI is used exclusively as an optional reader for notice images and for simple explanations. If offline, the core rules still work 100%.</p>
+        </div>
+
+        <div class="card guarantee-card">
+          <div class="guarantee-icon" aria-hidden="true">🏛️</div>
+          <h3 class="guarantee-title" data-i18n="g4_title">4. Grounded in Law</h3>
+          <p class="guarantee-body" data-i18n="g4_body">Backed by the Supreme Court of India's landmark suo motu order (17 Oct 2025) confirming digital arrest has no legal authority.</p>
+        </div>
+      </div>
+
+      <!-- Public Rules Table / List -->
+      <div class="card rules-table-card">
+        <h3 class="card-title" data-i18n="public_rules_title">Public Rule Inventory (14 Rules)</h3>
+        <p class="card-subtitle" data-i18n="public_rules_sub">Every rule evaluated in the deterministic engine is publicly listed below with weights and rationale.</p>
+        <div id="rules-list-container" class="rules-list-container">
+          <!-- Loaded via /api/rules -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <p><strong>सचपत्र (SachPatra)</strong> — Digital Governance & Civic Safety Shield</p>
+        <p class="footer-sub">Hackathon: NxtWave IDEA//FORGE, Track 1 (Civic Pulse). Solo submission.</p>
+      </div>
+      <div class="footer-right">
+        <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer">cybercrime.gov.in</a>
+        <a href="https://sancharsaathi.gov.in" target="_blank" rel="noopener noreferrer">Sanchar Saathi</a>
+        <a href="https://api.sci.gov.in/supremecourt/2025/59769/59769_2025_2_7_65003_Order_17-Oct-2025.pdf" target="_blank" rel="noopener noreferrer">Supreme Court Order</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>

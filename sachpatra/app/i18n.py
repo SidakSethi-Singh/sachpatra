@@ -89,8 +89,8 @@ RULES_METADATA: Dict[str, Dict[str, Any]] = {
         },
         "why": {
             "en": "Law enforcement agencies never demand citizens remain on 24x7 Skype/WhatsApp video calls or keep cameras turned on.",
-            "hi": "असली पुलिस या जांच अधिकारी कभी भी नागरिकों को वीडियो कॉल पर बंधक नहीं बनाते और न ही कैमरा चालू रखने का दबाव डालते हैं।",
-            "pa": "ਅਸਲੀ ਪੁਲਿਸ ਜਾਂ ਜਾਂਚ ਅਧਿਕਾਰੀ ਕਦੇ ਵੀ ਨਾਗਰਿਕਾਂ ਨੂੰ ਵੀਡੀਓ ਕਾਲ 'ਤੇ ਬੰਧਕ ਨਹੀਂ ਬਣਾਉਂਦੇ ਅਤੇ ਨਾ ਹੀ ਕੈਮਰਾ ਚਾਲੂ ਰੱਖਣ ਲਈ ਮਜਬੂਰ ਕਰਦੇ ਹਨ।"
+            "hi": "असली पुलिस या जांच अधिकारी कभी भी आपको वीडियो कॉल पर नहीं रोकते और न ही लगातार कैमरा चालू रखने की मांग करते हैं।",
+            "pa": "ਅਸਲੀ ਪੁਲਿਸ ਜਾਂ ਜਾਂਚ ਅਧਿਕਾਰੀ ਕਦੇ ਵੀ ਤੁਹਾਨੂੰ ਵੀਡੀਓ ਕਾਲ 'ਤੇ ਨਹੀਂ ਰੱਖਦੇ ਅਤੇ ਨਾ ਹੀ ਲਗਾਤਾਰ ਕੈਮਰਾ ਚਾਲੂ ਰੱਖਣ ਦੀ ਮੰਗ ਕਰਦੇ ਹਨ।"
         },
         "source_url": OFFICIAL_SOURCES["cybercrime"]
     },
@@ -231,9 +231,9 @@ RULES_METADATA: Dict[str, Dict[str, Any]] = {
             "pa": "ਵਟਸਐਪ ਚੈਟ 'ਤੇ ਭੇਜਿਆ ਗਿਆ ਜਾਅਲੀ ਜ਼ਬਤੀ ਜਾਂ ਗ੍ਰਿਫ਼ਤਾਰੀ ਵਾਰੰਟ"
         },
         "why": {
-            "en": "Warrants and bank freeze orders are served physically through legal summons, never as PDFs or images transmitted over social chat apps.",
-            "hi": "अदालत या पुलिस के गिरफ्तारी वारंट और खाता सीज आदेश डाक या पुलिस द्वारा व्यक्तिगत रूप से दिए जाते हैं, व्हाट्सएप चैट पर फोटो भेजकर नहीं।",
-            "pa": "ਅਦਾਲਤੀ ਵਾਰੰਟ ਅਤੇ ਖਾਤਾ ਫਰੀਜ਼ ਕਰਨ ਦੇ ਹੁਕਮ ਵਿਅਕਤੀਗਤ ਤੌਰ 'ਤੇ ਦਿੱਤੇ ਜਾਂਦੇ ਹਨ, ਵਟਸਐਪ ਚੈਟ 'ਤੇ ਫੋਟੋਆਂ ਭੇਜ ਕੇ ਨਹੀਂ।"
+            "en": "Genuine legal notices come through official channels and can be verified with the court or police station, and you should never act on a photo sent by a stranger during a call.",
+            "hi": "असली कानूनी नोटिस आधिकारिक माध्यमों से आते हैं और अदालत या थाने से उनकी पुष्टि की जा सकती है; कॉल के दौरान किसी अनजान व्यक्ति द्वारा भेजी गई फोटो पर कभी भरोसा न करें और न ही कोई कदम उठाएं।",
+            "pa": "ਅਸਲੀ ਕਾਨੂੰਨੀ ਨੋਟਿਸ ਸਰਕਾਰੀ ਚੈਨਲਾਂ ਰਾਹੀਂ ਆਉਂਦੇ ਹਨ ਅਤੇ ਅਦਾਲਤ ਜਾਂ ਥਾਣੇ ਤੋਂ ਉਨ੍ਹਾਂ ਦੀ ਪੁਸ਼ਟੀ ਕੀਤੀ ਜਾ ਸਕਦੀ ਹੈ; ਕਾਲ ਦੌਰਾਨ ਕਿਸੇ ਅਣਜਾਣ ਵਿਅਕਤੀ ਵੱਲੋਂ ਭੇਜੀ ਗਈ ਫੋਟੋ 'ਤੇ ਕਦੇ ਯਕੀਨ ਨਾ ਕਰੋ ਅਤੇ ਕੋਈ ਕਦਮ ਨਾ ਚੁੱਕੋ।"
         },
         "source_url": OFFICIAL_SOURCES["cybercrime"]
     },

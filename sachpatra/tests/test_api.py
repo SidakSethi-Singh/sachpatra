@@ -11,6 +11,20 @@ class TestApiEndpoints:
     def setup_method(self):
         reset_rate_limits()
 
+    def test_serve_frontend_files(self):
+        resp_index = client.get("/")
+        assert resp_index.status_code == 200
+        assert "text/html" in resp_index.headers["content-type"]
+        assert "SachPatra" in resp_index.text
+
+        resp_css = client.get("/app.css")
+        assert resp_css.status_code == 200
+        assert "text/css" in resp_css.headers["content-type"]
+
+        resp_js = client.get("/app.js")
+        assert resp_js.status_code == 200
+        assert "javascript" in resp_js.headers["content-type"]
+
     def test_health_endpoint(self):
         resp = client.get("/api/health")
         assert resp.status_code == 200

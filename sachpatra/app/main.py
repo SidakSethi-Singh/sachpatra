@@ -12,6 +12,8 @@ from typing import Any, AsyncGenerator, Dict, List, Literal, Optional
 
 from fastapi import Depends, FastAPI, File, Form, HTTPException, Request, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from PIL import Image
 
 from app.engine import analyze_text
@@ -120,6 +122,35 @@ def strip_exif_in_memory(content: bytes, mime_type: str) -> bytes:
             return out.getvalue()
     except Exception:
         return content
+
+
+STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+if os.path.exists(STATIC_DIR):
+    app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
+
+
+@app.get("/", response_class=FileResponse)
+def serve_index() -> FileResponse:
+    index_file = os.path.join(STATIC_DIR, "index.html")
+    if not os.path.exists(index_file):
+        raise HTTPException(status_code=404, detail="Index file not found")
+    return FileResponse(index_file)
+
+
+@app.get("/app.css", response_class=FileResponse)
+def serve_css() -> FileResponse:
+    css_file = os.path.join(STATIC_DIR, "app.css")
+    if not os.path.exists(css_file):
+        raise HTTPException(status_code=404, detail="CSS file not found")
+    return FileResponse(css_file, media_type="text/css")
+
+
+@app.get("/app.js", response_class=FileResponse)
+def serve_js() -> FileResponse:
+    js_file = os.path.join(STATIC_DIR, "app.js")
+    if not os.path.exists(js_file):
+        raise HTTPException(status_code=404, detail="JS file not found")
+    return FileResponse(js_file, media_type="application/javascript")
 
 
 @app.get("/api/health")
