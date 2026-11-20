@@ -446,8 +446,32 @@
     }
   }
 
+  const SAMPLE_IMAGES = {
+    scam_cbi: { file: '/samples/sample_01_arrest_warrant.png', name: 'sample_01_arrest_warrant.png' },
+    scam_parcel: { file: '/samples/sample_03_courier_notice.png', name: 'sample_03_courier_notice.png' },
+    benign_otp: { file: '/samples/sample_04_bank_otp.png', name: 'sample_04_bank_otp.png' },
+    benign_bill: { file: '/samples/sample_02_freeze_order.png', name: 'sample_02_freeze_order.png' }
+  };
+
+  async function loadSampleImage(sampleKey) {
+    const meta = SAMPLE_IMAGES[sampleKey] || SAMPLE_IMAGES.scam_cbi;
+    try {
+      const resp = await fetch(meta.file);
+      if (!resp.ok) throw new Error('Failed to load sample image');
+      const blob = await resp.blob();
+      const file = new File([blob], meta.name, { type: 'image/png' });
+      await handleFileSelect(file);
+      elements.imageInputArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      showToast('Could not load sample document', 'error');
+    }
+  }
+
   function fillSample(sampleKey) {
-    setInputMode('text');
+    if (state.inputMode === 'image') {
+      loadSampleImage(sampleKey);
+      return;
+    }
     const sampleSet = SAMPLES[sampleKey];
     if (sampleSet) {
       elements.inputText.value = sampleSet[state.lang] || sampleSet.en;

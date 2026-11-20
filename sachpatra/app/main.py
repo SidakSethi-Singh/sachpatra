@@ -158,6 +158,10 @@ STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
 if os.path.exists(STATIC_DIR):
     app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
+SAMPLES_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "samples")
+if os.path.exists(SAMPLES_DIR):
+    app.mount("/samples", StaticFiles(directory=SAMPLES_DIR), name="samples")
+
 
 @app.get("/", response_class=FileResponse)
 def serve_index() -> FileResponse:

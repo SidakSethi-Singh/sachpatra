@@ -1,0 +1,33 @@
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Python cache & artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local databases & logs
+data/*.db
+data/*.sqlite3
+*.log
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary test artifacts
+sample_notice.jpg
