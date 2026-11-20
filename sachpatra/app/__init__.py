@@ -1,0 +1,1 @@
+"""SachPatra core application package."""
