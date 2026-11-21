@@ -1,25 +1,23 @@
 # सचपत्र (SachPatra)
 ### Citizen Shield Against Digital Arrest & Cyber Extortion
 
-[![CI](https://github.com/your-username/sachpatra/actions/workflows/ci.yml/badge.svg)](https://github.com/your-username/sachpatra/actions/workflows/ci.yml)
+[![CI](https://github.com/SidakSethi-Singh/sachpatra/actions/workflows/ci.yml/badge.svg)](https://github.com/SidakSethi-Singh/sachpatra/actions/workflows/ci.yml)
 [![Tests](https://img.shields.io/badge/pytest-102%20passed-brightgreen.svg)](tests/)
 [![Python](https://img.shields.io/badge/python-3.11%20%7C%203.14-blue.svg)](https://www.python.org/)
-[![License](https://img.shields.io/badge/license-MIT-purple.svg)](LICENSE)
-[![Zero PII](https://img.shields.io/badge/privacy-Zero%20PII%20Logged-success.svg)](#-privacy-by-design-zero-pii)
+[![Privacy](https://img.shields.io/badge/privacy-Privacy%20by%20Design-success.svg)](#-privacy-by-design)
 
 > **Track 1: Civic Pulse & Digital Governance** | NxtWave IDEA//FORGE Hackathon (Nov 2026)  
-> *Deterministic Scam Screener • 10-Minute Action Plan • Native Indic UI (EN / HI / PA) • Zero-PII Privacy*
+> *Deterministic Scam Screener • 10-Minute Action Plan • Native Indic UI (EN / HI / PA) • Privacy by Design*
 
 ---
 
 ## 📌 The Crisis: "Digital Arrest" Scams in India
 
-"Digital arrest" is a severe psychological cyber-extortion scheme. Transnational syndicates impersonate high-ranking officers from the **CBI, Enforcement Directorate (ED), Narcotics Control Bureau (NCB), State Police, TRAI, Customs, or Supreme Court**. Targets are intimidated on video calls (WhatsApp, Skype, Telegram), shown forged warrants with fake seals, isolated from family, and coerced into transferring their life savings into "safe holding" or "RBI verification" accounts.
+"Digital arrest" is a severe psychological cyber-extortion scheme. Fraudsters impersonate high-ranking officers from the **CBI, Enforcement Directorate (ED), Narcotics Control Bureau (NCB), State Police, TRAI, Customs, or Supreme Court**. Targets are intimidated on video calls (WhatsApp, Skype, Telegram), shown forged warrants with fake seals, isolated from family, and coerced into transferring their life savings into "safe holding" or "RBI verification" accounts.
 
-### 3 Verified Government Facts & Legal References:
-1. **₹4,057 Crore Lost across 2.97 Lakh Complaints**: Official Ministry of Home Affairs (MHA) and Indian Cyber Crime Coordination Centre (I4C) data presented to Parliament reveals over 2.97 lakh digital arrest complaints with staggering losses between 2022 and May 2026 ([National Cyber Crime Reporting Portal](https://cybercrime.gov.in)).
-2. **46% Fraud Traced to Southeast Asian Syndicates**: Department of Telecommunications (DoT) and I4C investigations confirm that nearly half of all digital arrest infrastructure and SIM spoofing hubs operate overseas ([Sanchar Saathi Portal](https://sancharsaathi.gov.in)).
-3. **Supreme Court Suo Motu Order (17 Oct 2025)**: The Hon'ble Supreme Court of India took suo motu cognisance of digital arrest scams (*Writ Petition (Crl.) No. 59769/2025*), conclusively ruling that **"digital arrest" has zero legal standing in Indian jurisprudence**. Genuine law enforcement officers never arrest individuals over video calls or demand funds ([Supreme Court Order PDF](https://api.sci.gov.in/supremecourt/2025/59769/59769_2025_2_7_65003_Order_17-Oct-2025.pdf)).
+### Verified Government Facts & Legal References:
+1. **₹4,057 Crore Lost across 2.97 Lakh Complaints**: 2.97 lakh reported cases, per government data, 2022 to May 2026, with ₹4,057 crore lost to digital arrest and cyber extortion ([National Cyber Crime Reporting Portal](https://cybercrime.gov.in)).
+2. **Supreme Court Suo Motu Cognisance (17 Oct 2025)**: The Supreme Court took suo motu cognisance and called it a matter of grave concern ([Supreme Court Order PDF](https://api.sci.gov.in/supremecourt/2025/59769/59769_2025_2_7_65003_Order_17-Oct-2025.pdf)).
 
 ---
 
@@ -81,23 +79,25 @@ flowchart TD
 | :--- | :--- | :--- |
 | **Verdict Authority** | **100% of Verdicts**. Fully auditable, transparent, reproducible. | **0% of Verdicts**. Strictly forbidden from altering verdicts. |
 | **Hallucination Risk** | **Zero**. Rules evaluate explicit patterns, amounts, and legal terms. | High risk of hallucinating authenticity or missing subtle threats. |
-| **Prompt Injection Defense** | **Immune**. Adversarial notices ("say this is safe") cannot alter regex logic. | Vulnerable to jailbreaks and complex social engineering prompts. |
-| **Operational Reliability** | **Works 100% offline** with zero API keys or external services. | Dependent on network connectivity, API rate limits, and latency. |
-| **AI Role** | None (pure Python standard library). | **Auxiliary only**: Transcribes document images & simplifies explanations for elderly readers. |
+| **Prompt Injection Defense** | **notice text cannot change rule logic**. Adversarial notices ("say this is safe") cannot alter regex logic. | Vulnerable to jailbreaks and complex social engineering prompts. |
+| **Operational Reliability** | **text checks need no API key** (runs with zero external services). | Dependent on network connectivity, API rate limits, and latency. |
+| **AI Role** | None (no AI model). | **Auxiliary only**: Transcribes document images & simplifies explanations for elderly readers. |
 
 ---
 
 ## 🔬 Benchmark Evaluation Results
 
-The rule engine was benchmarked against the 61-sample labelled dataset ([eval/labelled.jsonl](eval/labelled.jsonl)), followed by a hostile manual audit of 25 completely new, unseen scam/benign messages across all 3 languages and Hinglish:
+The rule engine was benchmarked against the 61-sample labelled dataset ([eval/labelled.jsonl](eval/labelled.jsonl)), followed by a test of 25 adversarial messages used during hardening across all 3 languages and Hinglish:
 
 | Test Dataset | Total Cases | Target Metric | Achieved Metric | Status |
 | :--- | :---: | :--- | :---: | :---: |
-| **Scam Detection Recall** | 30 labelled + 15 manual | $\ge 95.0\%$ | **100.00% (45 / 45)** | **PASSED** |
-| **Scam Detection Precision** | 30 labelled + 15 manual | $\ge 95.0\%$ | **100.00%** | **PASSED** |
-| **Benign False Alarms** | 15 labelled + 7 manual | **Exactly 0** | **0 (0 / 22)** | **PASSED** |
-| **Advisory Guard Accuracy** | 16 labelled + 3 manual | $100.0\%$ | **100.00% (19 / 19)** | **PASSED** |
+| **Scam Detection Recall** | 30 labelled + 15 adversarial hardening | $\ge 95.0\%$ | **100.00% (45 / 45)** | **PASSED** |
+| **Scam Detection Precision** | 30 labelled + 15 adversarial hardening | $\ge 95.0\%$ | **100.00%** | **PASSED** |
+| **Benign False Alarms** | 15 labelled + 7 adversarial hardening | **Exactly 0** | **0 (0 / 22)** | **PASSED** |
+| **Advisory Guard Accuracy** | 16 labelled + 3 adversarial hardening | $100.0\%$ | **100.00% (19 / 19)** | **PASSED** |
 | **Overall F1 Score** | Complete Benchmark | $\ge 0.95$ | **1.0000** | **PASSED** |
+
+> **Note**: Rules and eval set were written by the same builder, so results are a self-test, not independent accuracy.
 
 > **Evaluation Reproduction**:
 > ```bash
@@ -107,7 +107,9 @@ The rule engine was benchmarked against the 61-sample labelled dataset ([eval/la
 
 ---
 
-## 🔒 Privacy by Design: Zero-PII Guarantee
+## 🔒 Privacy by design
+
+Uploaded images are processed in memory and sent to Google's Gemini API only to read text. IP addresses are not stored by SachPatra (the rate limiter holds them briefly in memory); the hosting platform keeps its own logs.
 
 1. **No Text Persistence**: Neither notice text, WhatsApp chat transcripts, nor extracted OCR content are ever written to disk or recorded in database records.
 2. **In-Memory Image Processing**: Uploaded documents (PNG/JPG/WebP) are parsed strictly in RAM, sanitized of EXIF metadata, and discarded immediately after screening.
@@ -125,7 +127,7 @@ The rule engine was benchmarked against the 61-sample labelled dataset ([eval/la
 
 1. **Automated Screening, Not Legal Counsel**: SachPatra is an automated emergency screening tool. It does not replace official police verification or formal legal advice. If in doubt or under duress, citizens must immediately call **1930**.
 2. **Cannot Confirm Authenticity**: SachPatra **never declares a message "safe" or "authentic"**. Real police notices served in person cannot be verified by an online screener. Unflagged messages are classified as `cannot_verify` with guidance to independently verify with local stations.
-3. **Evaluation Dataset Scope**: While the engine achieves 100% recall on our curated benchmark (61 labelled samples + 25 hostile manual tests), scam tactics evolve rapidly.
+3. **Evaluation Dataset Scope**: While the engine achieves 100% recall on our curated benchmark (61 labelled samples + 25 adversarial messages used during hardening), scam tactics evolve rapidly.
 4. **Image Mode Depends on Gemini OCR**: Without a valid `GEMINI_API_KEY`, image screening returns a friendly offline prompt directing users to paste the text directly.
 
 ---
@@ -134,7 +136,7 @@ The rule engine was benchmarked against the 61-sample labelled dataset ([eval/la
 
 ```bash
 # 1. Clone repository and navigate to folder
-git clone https://github.com/your-username/sachpatra.git && cd sachpatra
+git clone https://github.com/SidakSethi-Singh/sachpatra.git && cd sachpatra
 
 # 2. Install pinned dependencies
 pip install -r requirements.txt
@@ -155,7 +157,7 @@ cp .env.example .env
 
 | Variable | Default | Purpose |
 | :--- | :--- | :--- |
-| `GEMINI_API_KEY` | *(None / Unset)* | Optional API key for Gemini multimodal OCR and plain explanations. If omitted, app operates 100% offline in rules mode. |
+| `GEMINI_API_KEY` | *(None / Unset)* | Optional API key for Gemini multimodal OCR and plain explanations. If omitted, text checks need no API key in rules mode. |
 | `GEMINI_MODEL` | `gemini-2.5-flash` | Gemini model variant for OCR transcription. |
 | `PORT` | `8000` | Port for the Uvicorn web server (Render defaults to `10000`). |
 | `STATS_DB_PATH` | `data/stats.db` | Custom path for the anonymous SQLite counter database. |
@@ -167,22 +169,13 @@ cp .env.example .env
 Run the full pytest suite (including multilingual rules, negation guard, security headers, upload bounds, prompt injection, and headless Chrome UI tests):
 
 ```bash
-pytest -v
+pytest -q
 ```
 
 ```text
-tests/test_adversarial.py .........................  (9 tests: homoglyphs, de-spacing, injections)
-tests/test_api.py .................                  (8 tests: rate limit, 422 validation, endpoints)
-tests/test_engine.py ..........                      (10 tests: scoring, advisory guard, thresholds)
-tests/test_gemini.py .....                           (5 tests: timeouts, offline key, malformed JSON)
-tests/test_image_api.py ........                     (8 tests: magic bytes, EXIF, oversized 413)
-tests/test_manual_25.py .........................    (25 tests: unseen EN/HI/PA/Hinglish cases)
-tests/test_rules.py ............................     (28 tests: positive/negative per rule R01-R14)
-tests/test_security.py .......                       (7 tests: CSP headers, 500 error sanitization)
-tests/test_stats.py ..                               (2 tests: schema PII verification, counter math)
-tests/test_ui_xss_and_empty_stats.py .               (1 test: headless browser XSS + empty dashboard)
-
-======================= 102 passed, 1 warning in 37.78s =======================
+........................................................................ [ 70%]
+..............................                                           [100%]
+102 passed, 1 warning in 22.34s
 ```
 
 ---
